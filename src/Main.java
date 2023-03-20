@@ -1,14 +1,8 @@
 
 public class Main {
     public static void main(String[] args){
-        WordDictionary wordDictionary = new WordDictionary();
-        wordDictionary.addWord("bad");
-        wordDictionary.addWord("dad");
-        wordDictionary.addWord("mad");
-        System.out.println(wordDictionary.search("pad"));
-        System.out.println(wordDictionary.search("bad"));
-        System.out.println(wordDictionary.search(".ad"));
-        System.out.println(wordDictionary.search("b.."));
+        int[] f = {0,0,1,0,0};
+        System.out.println(new Solution().canPlaceFlowers(f,1));
     }
 }
 
