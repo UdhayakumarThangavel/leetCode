@@ -2,6 +2,32 @@ import java.util.HashMap;
 
 class Solution {
 
+    public int makeConnected(int n, int[][] connections) {
+        int notConnected = 0;
+        int extraCable = 0;
+        for (int i=1;i<n ;i++
+             ) {
+            int count=0;
+            for (int[] con: connections
+                 ) {
+                if(i==con[1]){
+                    count +=1;
+                }
+            }
+            if(count==0){
+                notConnected += 1;
+            } else if(count>1){
+                extraCable += (count-1);
+            }
+        }
+        System.out.println(notConnected);
+        System.out.println(extraCable);
+        if(extraCable>=notConnected){
+            return notConnected;
+        }
+        return -1;
+    }
+
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         if(flowerbed.length==1){
             if(flowerbed[0]==0){
@@ -41,12 +67,29 @@ class Solution {
     }
     public boolean isValid(String s) {
         String[] array = s.split("");
-        boolean isValid = false;
-        boolean isNotValid = false;
+        int[] count = {0,0,0,0,0,0};
         if(array.length%2==0){
-
+            for (String value: array
+            ) {
+                if(value.equals("(")){
+                    count[0] += 1;
+                } else if (value.equals(")")) {
+                    count[1] += 1;
+                } else if (value.equals("{")) {
+                    count[2] += 1;
+                } else if (value.equals("}")) {
+                    count[3] += 1;
+                } else if (value.equals("[")) {
+                    count[4] += 1;
+                } else if (value.equals("]")) {
+                    count[5] += 1;
+                }
+            }
+            if(count[0]==count[1] && count[2]==count[3] && count[4]==count[5]){
+                return true;
+            }
         }
-        return isValid;
+        return false;
     }
     public boolean temp2isValid(String s) {
         String[] array = s.split("");
